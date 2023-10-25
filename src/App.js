@@ -4,7 +4,7 @@ import Register from "./components/Register";
 import { useState } from "react";
 import Navbar from "./components/NavBar";
 import jwt from 'jwt-decode';
-import MainView from './components/MainView/index'
+import MainView from "./components/MainView/Index"
 function App() {
   const navigate = useNavigate();
 
@@ -14,9 +14,10 @@ function App() {
       const decodedToken = jwt(token);
       const user = {
         login: decodedToken.login,
-        name: decodedToken.name,
-        email: decodedToken.email,
-        roles: decodedToken.roles
+          firstName: decodedToken.firstName,
+          lastName: decodedToken.lastName,
+          email: decodedToken.email,
+          roles: decodedToken.roles
       };
       return { token, user };
     }
@@ -45,7 +46,8 @@ function App() {
         const decodedToken = jwt(token.accessToken);
         const user = {
           login: decodedToken.login,
-          name: decodedToken.name,
+          firstName: decodedToken.firstName,
+          lastName: decodedToken.lastName,
           email: decodedToken.email,
           roles: decodedToken.roles
         };
@@ -53,7 +55,7 @@ function App() {
         // Przekierowanie po udanej autoryzacji
         navigate("/");
       } else {
-        if (response.status === 401) {
+        if (response.status === 400) {
           console.log("Invalid login or password");
         }
       }

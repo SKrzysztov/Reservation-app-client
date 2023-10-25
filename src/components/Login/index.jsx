@@ -23,12 +23,12 @@ const Login = ({ authenticateUser }) => {
         switch (name) {
             case "login":
                 error = !value.match(/^[A-Za-z0-9]{3,14}$/)
-                    ? "Login must be alphanumeric and 3-14 characters long"
+                    ? "Mogą być tylko litery łacinskie i liczby (musi zawierac od 3 do 14 znaków)"
                     : "";
                 break;
             case "password":
                 error = !value.match(/^[A-Za-z0-9]{5,14}$/)
-                    ? "Password must be alphanumeric and 5-14 characters long"
+                    ? "Mogą być tylko litery łacinskie i liczby (musi zawierac od 3 do 14 znaków)"
                     : "";
                 break;
             default:
@@ -53,10 +53,14 @@ const Login = ({ authenticateUser }) => {
     return (
         <div className="login_container">
             <Container>
-                <Row className="login_form_container">
-                    <Col className="left" xs={12} md={8}>
+                <Row>
+                    <Col xs={12} md={4} className="left">
+                        {/* Dodaj klasę "left" tutaj */}
+                        {/* Pusty div z marginesem */}
+                    </Col>
+                    <Col xs={12} md={8}>
                         <Form className="form_container" onSubmit={handleSubmit}>
-                            <h1>Login</h1>
+                            <h1>Logowanie</h1>
                             <Form.Control
                                 type="text"
                                 placeholder="Login"
@@ -68,7 +72,7 @@ const Login = ({ authenticateUser }) => {
                             {errors.login && <div className="error_msg">{errors.login}</div>}
                             <Form.Control
                                 type="password"
-                                placeholder="Password"
+                                placeholder="Hasło"
                                 name="password"
                                 onChange={handleChange}
                                 value={data.password}
@@ -76,17 +80,9 @@ const Login = ({ authenticateUser }) => {
                             />
                             {errors.password && (<div className="error_msg">{errors.password}</div>)}
                             <Button type="submit" size="lg" variant="outline-light">
-                                Sign In
+                                Zaloguj
                             </Button>
                         </Form>
-                    </Col>
-                    <Col className="right" xs={12} md={4}>
-                        <h1 className="my-4">Move to registration</h1>
-                        <Link to="/register">
-                            <Button type="button" size="lg" variant="outline-light">
-                                Sign up
-                            </Button>
-                        </Link>
                     </Col>
                 </Row>
             </Container>

@@ -3,14 +3,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 1001vh;
     background-color: #f4f4f4;
   }
   
   .form_container {
     background-color: #ffffff;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
