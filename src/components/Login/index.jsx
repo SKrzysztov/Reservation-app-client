@@ -84,6 +84,19 @@ const Login = ({ authenticateUser }) => {
                             </Button>
                         </Form>
                     </Col>
+                    <Col className="right" xs={0} md={4}> 
+                        <h1>Nie masz konta? Zarejestruj się</h1>
+                        <Link to="/login">
+                            <Button
+                                type="button"
+                                className="mt-4"
+                                size="lg"
+                                variant="outline-light"
+                            >
+                               Rejestracja
+                            </Button>
+                        </Link>
+                    </Col>
                 </Row>
             </Container>
         </div>

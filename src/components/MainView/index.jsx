@@ -3,7 +3,7 @@ import React from 'react';
 const MainView = () => {
   return (
     <div>
-      <h1>Hello World</h1>
+      <h1>Application</h1>
     </div>
   );
 };

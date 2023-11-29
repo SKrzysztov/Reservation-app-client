@@ -3,15 +3,18 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import { useState } from "react";
 import Navbar from "./components/NavBar";
-import jwt from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 import MainView from "./components/MainView/Index"
+import ServiceProviderList from "./components/ServiceProviderList";
+import CreateServiceProvider from "./components/CreateServiceProvider";
 function App() {
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
+  
   const initAuthData = () => {
     const token = localStorage.getItem("token");
     if (token) {
-      const decodedToken = jwt(token);
+      const decodedToken = jwtDecode(token);
       const user = {
         login: decodedToken.login,
           firstName: decodedToken.firstName,
@@ -43,7 +46,7 @@ function App() {
       if (response.ok) {
         const token = await response.json();
         localStorage.setItem("token", token.accessToken);
-        const decodedToken = jwt(token.accessToken);
+        const decodedToken = jwtDecode(token.accessToken);
         const user = {
           login: decodedToken.login,
           firstName: decodedToken.firstName,
@@ -52,7 +55,6 @@ function App() {
           roles: decodedToken.roles
         };
         setAuthData({ token, user });
-        // Przekierowanie po udanej autoryzacji
         navigate("/");
       } else {
         if (response.status === 400) {
@@ -104,6 +106,10 @@ function App() {
         <Route path="/login" element={<Login authenticateUser={authenticateUser} />} />
         <Route path="/register" element={<Register registerUser={registerUser} />} />
         <Route path="/" element={<MainView/>} /> 
+        <Route path="/serviceprovider" element={<ServiceProviderList/>} /> 
+        <Route path="/serviceprovider/create" element={<CreateServiceProvider/>} /> 
+
+
       </Routes>
     </div>
   );
